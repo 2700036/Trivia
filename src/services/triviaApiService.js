@@ -1,8 +1,8 @@
 import shuffle from "lodash.shuffle";
 
 class TriviaApiService {
-  getQuestion = () => {
-    return fetch ('https://opentdb.com/api.php?amount=1')
+  getQuestion = (category) => {
+    return fetch (`https://opentdb.com/api.php?amount=1${category !== 'any' ? `&category=${category}` : ''}`)
     .then(res=> res.ok ? res.json() : new Promise.reject(`Ошибка: ${res.status}`))
     .then(({results: [q]}) => q)
     .then(q=>{

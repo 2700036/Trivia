@@ -5,19 +5,19 @@ import ResultModal from './components/ResultModal';
 import Scoreboard from './components/Scoreboard';
 import './App.css';
 import triviaApi from './services/triviaApiService';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setQuestion } from './actions';
 
 
 export default function App() {
   const dispatch = useDispatch();
-  
+  const category = useSelector(({category})=>category);  
 
   useEffect(() => {
-    triviaApi.getQuestion()
+    triviaApi.getQuestion(category)
     .then(data=> dispatch(setQuestion(data)))
     .catch(err => console.log(err))    
-  }, [])
+  }, [category])
 
 
 

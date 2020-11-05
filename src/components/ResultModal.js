@@ -1,29 +1,36 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 
-export default function ResultModal() {
+
+export default function ResultModal({nextQuestion}) {
+  const {question, isAnswerCorrect} = useSelector(state=>state)
   return (
     <div className="result-modal">
       <div className="overlay" />
       <div className="result-modal-content">
-        <h3>
-          👊👊👊
+        {isAnswerCorrect && <h3>
+          👊
           <br />
-          YOU WON!
-        </h3>
+          Correct!
+        </h3>}
 
+        {!isAnswerCorrect && (
+          <>
         <h3>
-          😟😢😟
+          😢
           <br />
-          YOU LOST!
+          Wrong...
         </h3>
 
         <div className="correct-answer">
-          <small>The correct answer was:</small>
+          <small>The correct answer is:</small>
           <br />
-          <strong>Answer here</strong>
+        <strong dangerouslySetInnerHTML={{ __html: question.correct_answer}}/>
         </div>
+        </>
+        )}
 
-        <button>Go to next question 👉</button>
+        <button onClick={nextQuestion}>Go to next question 👉</button>
       </div>
     </div>
   );

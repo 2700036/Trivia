@@ -6,3 +6,10 @@ export const setCategory = (payload) => ({
   type: 'SET_CATEGORY',
   payload
 })
+export const setAnswerStatus = (payload) => ({
+  type: 'SET_ANSWER_STATUS',
+  payload
+})
+export const resetCategory = () => ({
+  type: 'RESET_CATEGORY'  
+})

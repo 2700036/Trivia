@@ -1,15 +1,19 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 
 export default function Scoreboard() {
+  const {correctScores, wrongScores} = useSelector(state => state)
+
   return (
     <div className="scoreboard">
       <div className="wrong">
-        <strong>0</strong>
-        <span>wrong</span>
+        <strong>{wrongScores}</strong>
+        
       </div>
+      <div>-</div>
       <div className="correct">
-        <strong>0</strong>
-        <span>correct</span>
+  <strong>{correctScores}</strong>
+        
       </div>
     </div>
   );

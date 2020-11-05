@@ -1,15 +1,27 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { setAnswerStatus, resetCategory } from '../actions';
+
+
 
 export default function Question() {
-  const {answers, question} = useSelector(({question}) => question)
-
+  const dispatch = useDispatch();
+  const {question: {answers, question}, category} = useSelector(state => state)
+  
   return (
     <div className="question">
+        <h2 className="category-button "
+        dangerouslySetInnerHTML={{__html: category?.name}}
+        onClick={()=>dispatch(resetCategory())}
+        />    
       <h2 dangerouslySetInnerHTML={{__html: question}}/>
 
       {answers?.map((answer, index) => (
-        <button key={answer+index} dangerouslySetInnerHTML={{__html: answer}}/>
+        <button 
+        key={answer+index} 
+        dangerouslySetInnerHTML={{__html: answer}}
+        onClick={()=>dispatch(setAnswerStatus(answer))}
+        />
       ))}
     </div>
   );

@@ -6,21 +6,26 @@ import Scoreboard from './components/Scoreboard';
 import './App.css';
 import useTrivia from './useTrivia';
 import CategoryModal from './components/CategoryModal';
+import { motion } from 'framer-motion';
 
 export default function App() {
-  const {isAnswerCorrect, nextQuestion, category} = useTrivia();
-
+  const {isAnswerCorrect, nextQuestion, category, question} = useTrivia();
+console.log(123)
   return (
     <div className="app">
       <h1>Trivia</h1>
-      {isAnswerCorrect !== null && <ResultModal nextQuestion={nextQuestion} />}
+      {isAnswerCorrect !== null && question && <ResultModal nextQuestion={nextQuestion} />}
       {category == null && <CategoryModal />}
-        <Scoreboard />      
-      <div className="question-main">
+      <Scoreboard />      
+      {question && <motion.div 
+      className="question-main"
+      initial={{scale: 0}}
+      animate={{scale: 1}}
+      >
         <Question />
-      </div>
+      </motion.div>}
       <div className="question-footer">
-        <button>Go to next question 👉</button>
+      {question && <button>Go to next question 👉</button>}
       </div>
     </div>
   );

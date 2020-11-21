@@ -2,14 +2,21 @@ import React from 'react';
 import categories from '../categories';
 import { useDispatch } from 'react-redux';
 import { setCategory } from '../actions';
+import { motion } from "framer-motion"
 
 export default function CategoryModal() {
   const dispatch = useDispatch();
   
   return (
     <div className="result-modal">
-      <div className="overlay" />
-      <div className="result-modal-content">
+      <motion.div className="overlay" 
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      />
+      <motion.div className="result-modal-content"
+      initial={{scale: 0}}
+      animate={{scale: 1}}
+      >
       <h2>Select Category:</h2>
 
 {categories?.map((category, index) => (
@@ -19,22 +26,8 @@ export default function CategoryModal() {
   onClick={()=>dispatch(setCategory(category))}
   />
 ))}
-      </div>
+      </motion.div>
     </div>
   );
 }
 
-{/* <select 
-      value={category}
-      onChange={e=>dispatch(setCategory(e.target.value))}
-      >
-        {categories.map((category, index) => (
-          <option 
-          key={index} 
-          value={category.id}
-          dangerouslySetInnerHTML={{__html: category.name}}
-          />
-            
-          
-        ))}
-      </select> */}

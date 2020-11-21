@@ -1,13 +1,19 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-
+import { motion } from "framer-motion"
 
 export default function ResultModal({nextQuestion}) {
   const {question, isAnswerCorrect} = useSelector(state=>state)
   return (
     <div className="result-modal">
-      <div className="overlay" />
-      <div className="result-modal-content">
+      <motion.div className="overlay" 
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      />
+      <motion.div className="result-modal-content"
+      initial={{scale: 0}}
+      animate={{scale: 1}}
+      >
         {isAnswerCorrect && <h3>
           👊
           <br />
@@ -31,7 +37,7 @@ export default function ResultModal({nextQuestion}) {
         )}
 
         <button onClick={nextQuestion}>Go to next question 👉</button>
-      </div>
+      </motion.div>
     </div>
   );
 }

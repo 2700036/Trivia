@@ -34,6 +34,16 @@ h1 {
   padding-bottom: 30px;
   padding-top: 30px;
   
+  
+  
+}
+@media (min-width: 700px){
+  .app {    
+    display: grid;
+    grid-template-rows: 30% 5% 60% 5%;
+    height: 90vh;
+    
+  }
 }
 
 .streak-checker {
@@ -110,12 +120,12 @@ h1 {
   align-items: center;
   justify-content: center;
   z-index: 10;
-  /* height: fit-content; */
+  
   padding: 5% 0;
 }
 
 .result-modal .overlay {
-  position: absolute;
+  position: fixed;
   background: rgba(0, 0, 0, 0.5);
   top: 0;
   right: 0;
@@ -138,6 +148,7 @@ h1 {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  transform: translateX(-50%);
 }
 
 .result-modal.is-correct h3 {
@@ -181,6 +192,8 @@ h1 {
   align-items: center;
   justify-content: center;
   margin: auto;
+  
+  
 }
 
 .question {

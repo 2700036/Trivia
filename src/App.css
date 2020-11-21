@@ -33,18 +33,20 @@ h1 {
   max-width:  700px;
   padding-bottom: 30px;
   padding-top: 30px;
-  
+  height: 100vh;
+  display: flex;
+    flex-direction: column;
   
   
 }
-@media (min-width: 700px){
+/* @media (min-width: 700px){
   .app {    
     display: grid;
     grid-template-rows: 30% 5% 60% 5%;
     height: 90vh;
     
   }
-}
+} */
 
 .streak-checker {
   position: fixed;
@@ -167,6 +169,8 @@ h1 {
 
 .result-modal-content .correct-answer {
   margin-bottom: 20px;
+  overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .result-modal-content .correct-answer small {
@@ -187,7 +191,7 @@ h1 {
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
   min-width: 300px;
   max-width: 90%;
-  min-height: 350px;
+  /* min-height: 350px; */
   display: flex;
   align-items: center;
   justify-content: center;

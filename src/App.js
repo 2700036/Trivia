@@ -10,7 +10,7 @@ import { motion } from 'framer-motion';
 
 export default function App() {
   const {isAnswerCorrect, nextQuestion, category, question} = useTrivia();
-
+  
   return (
     <div className="app">
       <h1>Trivia</h1>

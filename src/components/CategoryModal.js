@@ -1,11 +1,11 @@
 import React from 'react';
 import categories from '../categories';
-import { useDispatch } from 'react-redux';
-import { setCategory } from '../actions';
+
+import { useActions } from '../actions';
 import { motion } from "framer-motion"
 
 export default function CategoryModal() {
-  const dispatch = useDispatch();
+  const {setCategory} = useActions();
   
   return (
     <div className="result-modal">
@@ -23,7 +23,7 @@ export default function CategoryModal() {
   <button className="modal-button"
   key={category+index} 
   dangerouslySetInnerHTML={{__html: category.name}}
-  onClick={()=>dispatch(setCategory(category))}
+  onClick={()=>setCategory(category)}
   />
 ))}
       </motion.div>

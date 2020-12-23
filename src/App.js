@@ -22,7 +22,9 @@ export default function App() {
 
   return (
     <div className="app">
-      <h1>Trivia</h1>
+      <div className='app__title'>
+        <h1>Trivia</h1>
+        </div>
       {isAnswerCorrect !== null && question && (
         <ResultModal nextQuestion={nextQuestion} />
       )}
@@ -43,7 +45,7 @@ export default function App() {
       <Scoreboard />
       {question && <Question />}
       <div className="question-footer">
-        {question && <button>Go to next question 👉</button>}
+        {question && <button onClick={nextQuestion}>Go to next question 👉</button>}
       </div>
     </div>
   );

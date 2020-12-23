@@ -47,6 +47,19 @@ h1 {
     
   }
 } */
+.app__title {
+  font-family: 'Grandstander', cursive;
+  font-weight: bold;
+  margin: 0;
+  flex-basis: 200px;
+  height: 87px;
+  text-align: center;  
+  filter: drop-shadow(2px 4px 3px black);
+  font-size: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 .streak-checker {
   position: fixed;

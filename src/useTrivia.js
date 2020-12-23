@@ -1,29 +1,28 @@
 import React, { useCallback, useEffect } from 'react';
 import triviaApi from './services/triviaApiService';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useActions } from './actions';
-
 
 export default function useTrivia() {
   
   const {setQuestion, resetCategory, resetQuestion} = useActions();
-  const { category, isAnswerCorrect, question } = useSelector((state) => state);
+  const { category, isAnswerCorrect, question, difficulty } = useSelector((state) => state);
 
-  const nextQuestion = useCallback(() => {
+  const nextQuestion = useCallback(() => {    
     resetQuestion();
     triviaApi
-      .getQuestion(category?.id)
+      .getQuestion(category?.id, difficulty)
       .then((data) => setQuestion(data))
       .catch((err) => console.log(err));
-  }, [category]);
+  }, [category, difficulty]);
 
   useEffect(() => {
+    if (!category || !difficulty) return;
     nextQuestion();    
   }, [category, nextQuestion]);
 
   useEffect(() => {
-    const reset = () => setTimeout(() => {
-      console.log(123)
+    const reset = () => setTimeout(() => {      
       resetCategory()
     }, 2000)
     reset()
@@ -32,5 +31,5 @@ export default function useTrivia() {
     }
   }, [])
 
-  return {isAnswerCorrect, nextQuestion, category, question}
+  return {isAnswerCorrect, nextQuestion, category, difficulty, question}
 }

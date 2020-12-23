@@ -18,8 +18,15 @@ export function useActions() {
     type: 'SET_ANSWER_STATUS',
     payload
   })
+  const setDifficulty = (payload) => dispatch({
+    type: 'SET_DIFFICULTY',
+    payload: payload.name
+  })
   const resetCategory = () => dispatch({
     type: 'RESET_CATEGORY'  
+  }) 
+  const resetDifficulty = () => dispatch({
+    type: 'RESET_DIFFICULTY'  
   }) 
 
 
@@ -29,5 +36,7 @@ export function useActions() {
     setCategory, 
     setAnswerStatus, 
     resetCategory,
+    setDifficulty,
+    resetDifficulty,
   }
 }

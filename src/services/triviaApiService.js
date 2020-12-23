@@ -1,11 +1,13 @@
 import shuffle from "lodash.shuffle";
 
 class TriviaApiService {
-  getQuestion = (category) => {
-    return fetch (`https://opentdb.com/api.php?amount=1${category !== 'any' ? `&category=${category}` : ''}`)
+  getQuestion = (category, difficulty = 'medium') => {
+    return fetch (`https://opentdb.com/api.php?amount=1${category !== 'any' ? `&category=${category}` : ''}${category !== 'any' ? `&difficulty=${difficulty}` : ''}
+    `)
     .then(res=> res.ok ? res.json() : new Promise.reject(`Ошибка: ${res.status}`))
     .then(({results: [q]}) => q)
     .then(q=>{
+      console.log(category)
       q.answers = shuffle([...q.incorrect_answers, q.correct_answer])
       return q
     })
@@ -14,3 +16,4 @@ class TriviaApiService {
 
 const triviaApi = new TriviaApiService();
 export default triviaApi;
+

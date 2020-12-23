@@ -207,6 +207,10 @@ h1 {
   
   
 }
+.question__header {
+  display: flex;
+  justify-content: space-between;  
+}
 
 .question h2 {
   margin-top: 0;

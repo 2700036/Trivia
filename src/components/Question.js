@@ -1,7 +1,7 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useActions } from '../actions';
-
+import { motion } from "framer-motion";
 
 
 export default function Question() {
@@ -9,6 +9,11 @@ export default function Question() {
   const {question: {answers, question}, category, difficulty} = useSelector(state => state)
   
   return (
+    <motion.div
+          className="question-main"
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+        >
     <div className="question">
       <div className="question-header">
        <h2 className="category-button "
@@ -31,5 +36,6 @@ export default function Question() {
         />
       ))}
     </div>
+    </motion.div>
   );
 }

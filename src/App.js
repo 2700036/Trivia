@@ -6,7 +6,7 @@ import Scoreboard from "./components/Scoreboard";
 import "./App.css";
 import useTrivia from "./useTrivia";
 import Modal from "./components/Modal";
-import { motion } from "framer-motion";
+
 import { useActions } from "./actions";
 import difficulties from "./difficulties";
 
@@ -19,7 +19,7 @@ export default function App() {
     question
   } = useTrivia();
   const { setCategory, setDifficulty } = useActions();
-  
+
   return (
     <div className="app">
       <h1>Trivia</h1>
@@ -41,15 +41,7 @@ export default function App() {
         />
       )}
       <Scoreboard />
-      {question && (
-        <motion.div
-          className="question-main"
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
-        >
-          <Question />
-        </motion.div>
-      )}
+      {question && <Question />}
       <div className="question-footer">
         {question && <button>Go to next question 👉</button>}
       </div>

@@ -1,14 +1,12 @@
 import React from "react";
 import Question from "./components/Question";
-import categories from "./categories";
+import {categories, difficulties} from "./constants";
 import ResultModal from "./components/ResultModal";
 import Scoreboard from "./components/Scoreboard";
-import "./App.css";
-import useTrivia from "./useTrivia";
 import Modal from "./components/Modal";
-
-import { useActions } from "./actions";
-import difficulties from "./difficulties";
+import { useActions } from "./hooks/useActions";
+import useTrivia from "./hooks/useTrivia";
+import "./App.css";
 
 export default function App() {
   const {
@@ -25,17 +23,17 @@ export default function App() {
       <div className='app__title'>
         <h1>Trivia</h1>
         </div>
-      {isAnswerCorrect !== null && question && (
+      {isAnswerCorrect !== undefined && question && (
         <ResultModal nextQuestion={nextQuestion} />
       )}
-      {category == null && (
+      {!category && (
         <Modal
           items={categories}
           modalTitle="Category"
           callback={setCategory}
         />
       )}
-      {difficulty == null && (
+      {!difficulty && (
         <Modal
           items={difficulties}
           modalTitle="Difficulty"

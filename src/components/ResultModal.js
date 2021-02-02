@@ -3,7 +3,8 @@ import { useSelector } from 'react-redux';
 import { motion } from "framer-motion"
 
 export default function ResultModal({nextQuestion}) {
-  const {question, isAnswerCorrect} = useSelector(state=>state)
+  const {question, isAnswerCorrect} = useSelector(state=>state.trivia);
+  console.log(isAnswerCorrect)
   return (
     <div className="result-modal">
       <motion.div className="overlay" 
@@ -31,7 +32,7 @@ export default function ResultModal({nextQuestion}) {
         <div className="correct-answer">
           <small>The correct answer is:</small>
           <br />
-        <strong dangerouslySetInnerHTML={{ __html: question.correct_answer}}/>
+        <strong dangerouslySetInnerHTML={{ __html: question?.correct_answer}}/>
         </div>
         </>
         )}

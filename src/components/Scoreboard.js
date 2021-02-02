@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 
 export default function Scoreboard() {
-  const {correctScores, wrongScores} = useSelector(state => state)
+  const {correctScores, wrongScores} = useSelector(state => state.trivia)
 
   return (
     <div className="scoreboard">

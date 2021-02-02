@@ -1,12 +1,13 @@
 import React, { useCallback, useEffect } from 'react';
-import triviaApi from './services/triviaApiService';
+
 import { useSelector } from 'react-redux';
-import { useActions } from './actions';
+import triviaApi from '../services/triviaApiService';
+import { useActions } from './useActions';
 
 export default function useTrivia() {
   
   const {setQuestion, resetCategory, resetQuestion} = useActions();
-  const { category, isAnswerCorrect, question, difficulty } = useSelector((state) => state);
+  const { category, isAnswerCorrect, question, difficulty } = useSelector((state) => state.trivia);
 
   const nextQuestion = useCallback(() => {    
     resetQuestion();

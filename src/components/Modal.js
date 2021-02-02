@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 
 export default function Modal({ items, modalTitle, callback }) {
+  console.log(items)
   return (
     <div className="result-modal">
       <motion.div

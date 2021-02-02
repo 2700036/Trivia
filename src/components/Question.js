@@ -1,12 +1,12 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { useActions } from '../actions';
+import { useActions } from '../hooks/useActions';
 import { motion } from "framer-motion";
 
 
 export default function Question() {
   const {resetCategory, setAnswerStatus, resetDifficulty} = useActions();
-  const {question: {answers, question}, category, difficulty} = useSelector(state => state)
+  const {question: {answers, question}, category, difficulty} = useSelector(state => state.trivia)
   
   return (
     <motion.div

@@ -11,7 +11,7 @@ import {
 } from './types';
 import { Category, Difficulty } from '../constants';
 
-type TriviaState = {
+export type TriviaState = {
   question: Question | undefined,
   category: Category | undefined,
   isAnswerCorrect: boolean | undefined,

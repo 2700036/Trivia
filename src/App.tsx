@@ -8,7 +8,7 @@ import { useActions } from "./hooks/useActions";
 import useTrivia from "./hooks/useTrivia";
 import "./App.css";
 
-export default function App() {
+export default function App(): JSX.Element {
   const {
     isAnswerCorrect,
     nextQuestion,

@@ -7,31 +7,33 @@ import triviaApi from '../services/triviaApiService';
 import { useActions } from './useActions';
 
 export default function useTrivia() {
-  
-  const {setQuestion, resetCategory, resetQuestion} = useActions();
-  const { category, isAnswerCorrect, question, difficulty } = useSelector<RootState, TriviaState>((state) => state.trivia);
+  const { setQuestion, resetCategory, resetQuestion } = useActions();
+  const { category, isAnswerCorrect, question, difficulty } = useSelector<RootState, TriviaState>(
+    (state) => state.trivia
+  );
 
-  const nextQuestion = useCallback(() => {    
+  const nextQuestion = useCallback(() => {
+    if (!category) return;
     resetQuestion();
     triviaApi
-      .getQuestion(category?.id, difficulty)
+      .getQuestion(category!.id, difficulty)
       .then((data) => setQuestion(data))
       .catch((err) => console.log(err));
   }, [category, difficulty]);
 
   useEffect(() => {
     if (!category || !difficulty) return;
-    nextQuestion();    
+    nextQuestion();
   }, [category, nextQuestion]);
 
   useEffect(() => {
-    const reset: ReturnType<typeof setTimeout> = setTimeout(() => {      
-      resetCategory()
-    }, 2000);   
+    const reset: ReturnType<typeof setTimeout> = setTimeout(() => {
+      resetCategory();
+    }, 2000);
     return () => {
-      clearTimeout(reset)
-    }
-  }, [])
+      clearTimeout(reset);
+    };
+  }, []);
 
-  return {isAnswerCorrect, nextQuestion, category, difficulty, question}
+  return { isAnswerCorrect, nextQuestion, category, difficulty, question };
 }

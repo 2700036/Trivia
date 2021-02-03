@@ -21,9 +21,9 @@ export function useActions() {
     type: SET_ANSWER_STATUS,
     payload
   });
-  const setDifficulty = (payload: {name: Difficulty}): TriviaActionTypes => dispatch({
+  const setDifficulty = (payload: Difficulty): TriviaActionTypes => dispatch({
     type: SET_DIFFICULTY,
-    payload: payload.name
+    payload
   });
   const resetCategory = (): TriviaActionTypes => dispatch({
     type: RESET_CATEGORY  
@@ -31,7 +31,6 @@ export function useActions() {
   const resetDifficulty = (): TriviaActionTypes => dispatch({
     type: RESET_DIFFICULTY  
   }); 
-
 
   return {
     setQuestion, 
@@ -41,5 +40,8 @@ export function useActions() {
     resetCategory,
     setDifficulty,
     resetDifficulty,
-  }
+  }  
 }
+
+
+ 

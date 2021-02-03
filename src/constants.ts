@@ -2,7 +2,7 @@ export const difficulties = [
   { id: 0, name: 'easy' },
   { id: 1, name: 'medium' },
   { id: 2, name: 'hard' },    
-];
+] as const;
 
 export const categories = [
   {
@@ -24,4 +24,7 @@ export const categories = [
   { id: 25, name: 'Art' },
   { id: 26, name: 'Celebrities' },
   { id: 27, name: 'Animals' },
-];
+] as const;
+
+export type Difficulty = typeof difficulties[number]['name'];
+export type Category = typeof categories[number];

@@ -7,18 +7,17 @@ import {
   RESET_CATEGORY,
   SET_ANSWER_STATUS,
   TriviaActionTypes,
-  Difficulty,
-  Category,
   Question,
 } from './types';
+import { Category, Difficulty } from '../constants';
 
 type TriviaState = {
   question: Question | undefined,
-  category: Category,
+  category: Category | undefined,
   isAnswerCorrect: boolean | undefined,
   correctScores: number,
   wrongScores: number,
-  difficulty: Difficulty,
+  difficulty: Difficulty | undefined,
 }
 
 const initialState: TriviaState = {

@@ -1,3 +1,5 @@
+import { Difficulty, Category } from "../constants";
+
 export type Question = {
   category: string;
   type: string;
@@ -7,11 +9,7 @@ export type Question = {
   incorrect_answers: string[];
   answers: string[];
 };
-export type Category = {
-  id: number | 'any';
-  name: string;
-} | undefined;
-export type Difficulty = Question['difficulty'] | undefined
+
 
 export const SET_QUESTION = 'SET_QUESTION';
 type SetQuestionAction = {
@@ -53,4 +51,4 @@ export type TriviaActionTypes =
 | ResetDifficultyAction
 | SetCategoryAction
 | ResetCategoryAction
-| SetAnswerStatusAction
+| SetAnswerStatusAction;

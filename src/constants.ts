@@ -29,4 +29,3 @@ export const categories = [
 export type Difficulty = typeof difficulties[number]['name'];
 export type Category = typeof categories[number];
 export type CategoryId = Category['id'];
-

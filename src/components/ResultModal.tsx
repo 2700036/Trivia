@@ -1,10 +1,16 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
+import { RootState } from '../reducers/rootReducer';
+import { TriviaState } from '../reducers/trivia';
 
-export default function ResultModal({nextQuestion}) {
-  const {question, isAnswerCorrect} = useSelector(state=>state.trivia);
-  console.log(isAnswerCorrect)
+type ResultModalProps = {
+  nextQuestion: () => void
+}
+
+export default function ResultModal({nextQuestion}: ResultModalProps) {
+  const {question, isAnswerCorrect} = useSelector<RootState, TriviaState>(state=>state.trivia);
+  
   return (
     <div className="result-modal">
       <motion.div className="overlay" 
@@ -21,7 +27,7 @@ export default function ResultModal({nextQuestion}) {
           Correct!
         </h3>}
 
-        {!isAnswerCorrect && (
+        {!isAnswerCorrect && question && (
           <>
         <h3>
           😢

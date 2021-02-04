@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 
 import { TriviaActionTypes } from "../reducers/types";
 import { useActions } from "../hooks/useActions";
+import { Category, difficulties } from "../constants";
 
 type ModalProps = {
   items: ReadonlyArray<{
@@ -10,7 +11,7 @@ type ModalProps = {
     name: string;
 }>, 
   modalTitle: string, 
-  callback: any 
+  callback: (payload: any) => TriviaActionTypes; 
 }
 
 export default function Modal({ items, modalTitle, callback }: ModalProps) {
